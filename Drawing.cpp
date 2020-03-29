@@ -250,12 +250,12 @@ void cDrawing::HealthBar(int health, float maxhealth, int x, int y, int width, i
 	FilledBox(x - width / 2 - 5, y + healthBarDelta, 3, healthBar, D3DCOLOR_XRGB(r, g, 0));
 }
 
-void cDrawing::DrawScoreBoard(int x, int y, std::vector<Team> Teams)
+void cDrawing::DrawCrewList(int x, int y, std::vector<Crew> Crews)
 {
-	if (Teams.size() == 0)
+	if (Crews.size() == 0)
 		return;
 
-	for (int i = 0; i < Teams.size(); ++i)
+	for (int i = 0; i < Crews.size(); ++i)
 	{
 		auto color D3DCOLOR_XRGB(255, 255, 255);
 
@@ -263,20 +263,16 @@ void cDrawing::DrawScoreBoard(int x, int y, std::vector<Team> Teams)
 
 		FilledBox(x, y + 60*i, 70, 60, color);
 		Line(x + 70, y + 60 * i, x + 70, y + 60 * (i + 1), D3DCOLOR_XRGB(255, 255, 255));
-		String(Teams.at(i).teamName.c_str(), x + 35, y + 20 + 60 * i, D3DCOLOR_XRGB(Teams.at(i).color.r, Teams.at(i).color.g, Teams.at(i).color.b), true, "small");
+		String(Crews.at(i).crewName.c_str(), x + 35, y + 20 + 60 * i, D3DCOLOR_XRGB(Crews.at(i).color.r, Crews.at(i).color.g, Crews.at(i).color.b), true, "small");
 		for (int j = 0; j < 4; ++j)
 		{
 			j % 2 == 0 ?  color = D3DCOLOR_XRGB(51, 51, 51): color = D3DCOLOR_XRGB(77, 77, 77);
 			FilledBox(x+71, y + (i*4*15) + 15 * j, 70*3, 15, color);
-			if (j< Teams.at(i).Players.size())
-			String(Teams.at(i).Players.at(j).PlayerName.c_str(), x + 75, y + 2 + (i * 4 * 15) + 15 * j, D3DCOLOR_XRGB(255, 255, 255), false, "small");
+			if (j< Crews.at(i).Players.size())
+			String(Crews.at(i).Players.at(j).PlayerName.c_str(), x + 75, y + 2 + (i * 4 * 15) + 15 * j, D3DCOLOR_XRGB(255, 255, 255), false, "small");
 		}
 		Line(x, y + 60 * i, x + 280, y + 60 * i, D3DCOLOR_XRGB(255, 255, 255));
-
 	}
-	   
-
-
 }
 
 static bool once = false;
@@ -288,7 +284,7 @@ void cDirectX::Render(bool  active)
 	d3ddev->BeginScene();
 
 	if (!once)	
-	Draw->String("Initializing Please Wait", 100, 100, D3DCOLOR_XRGB(0, 255, 0), false, "default");
+	Draw->String("Initializing Please Wait", 110, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
 
 	if (once)
 	{

@@ -119,26 +119,25 @@ struct Color
 			);
 		}
 	}
-
 };
-struct TeamMate
+
+struct CrewMate
 {
 	std::string PlayerName;
 };
 
-struct Team
+struct Crew
 {
 	Color color;
-	std::string teamName;
-	std::vector<TeamMate> Players;
+	std::string crewName;
+	std::vector<CrewMate> Players;
 };
-
 
 
 class cCheat
 {
 public:
-	std::vector<Team>Crews;
+	std::vector<Crew>Crews;
 	bool bAnimals, bShips, bPlayers, bTreasure;
 public:
 	void readData();

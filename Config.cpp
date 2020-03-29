@@ -94,6 +94,9 @@ bool c_config::init() {
 	item(Vars.ESP.Skeleton.colorSkeleton, "ESP.Skeleton.colorSkeleton", m_items);
 
 	item(Vars.ESP.Treasure.bActive, "ESP.Treasure.bActive", m_items);
+	item(Vars.ESP.Crosshair.bActive, "ESP.Crosshair.bActive", m_items);
+	item(Vars.ESP.HUD.bActive, "ESP.HUD.bActive", m_items);
+	item(Vars.ESP.Crewlist.bActive, "ESP.Crewlist.bActive", m_items);
 
 
 	return true;

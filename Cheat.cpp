@@ -1,5 +1,6 @@
 #include "Cheat.h"
 #include <fstream>
+using namespace std;
 
 cCheat* Cheat = new cCheat();
 
@@ -70,6 +71,17 @@ void cCheat::readData()
 		auto offset = gobjectsoffset + 7;
 		GObjects = Mem->Read<uintptr_t>(address + gobjectsoffset + 7);
 	}
+
+	std::ofstream myfile2;
+	myfile2.open("Offsets.txt");
+	myfile2 << "baseModule: " << std::hex << baseModule << "\n";
+	myfile2 << "baseSize: " << std::hex << baseSize << "\n";
+	myfile2 << "UWorld: " << std::hex << UWorld << "\n";
+	myfile2 << "UWorld-offset: " << std::hex << UWorld-baseModule << "\n";
+	myfile2 << "GNames: " << std::hex << GNames << "\n";
+	myfile2 << "GNames-offset: " << std::hex << GNames-baseModule << "\n";
+	myfile2 << "GObjects: " << std::hex << GObjects << "\n";
+	myfile2 << "GObjects-offset: " << std::hex << GObjects-baseModule << "\n";
 
 	if (Names.empty())
 	{
@@ -296,8 +308,8 @@ void cCheat::readData()
 		{
 			Crews.clear();
 
-			Team tempTeam;
-			TeamMate tempPlayers;
+			Crew tempCrew;
+			CrewMate tempPlayers;
 			auto crewService = *reinterpret_cast<ACrewService*>(&actors[i]);;
 			auto crews = crewService.GetCrews();
 			if (!crews.IsValid())
@@ -309,19 +321,19 @@ void cCheat::readData()
 				if (!players.IsValid())
 					continue;
 
-				tempTeam.teamName = crews[c].GetShipType();
+				tempCrew.crewName = crews[c].GetShipType();
 				if (SOT->Ships[c].type.find("azure") != std::string::npos)
-					tempTeam.color = Color(0, 255, 255);
+					tempCrew.color = Color(0, 255, 255);
 				else if (SOT->Ships[c].type.find("regal") != std::string::npos)
-					tempTeam.color = Color(255, 0, 255);
+					tempCrew.color = Color(255, 0, 255);
 				else if (SOT->Ships[c].type.find("lucky") != std::string::npos)
-					tempTeam.color = Color(0, 255, 0);
+					tempCrew.color = Color(0, 255, 0);
 				else if (SOT->Ships[c].type.find("flaming") != std::string::npos)
-					tempTeam.color = Color(255, 0, 0);
+					tempCrew.color = Color(255, 0, 0);
 				else if (SOT->Ships[c].type.find("golden") != std::string::npos)
-					tempTeam.color = Color(255, 255, 0);
+					tempCrew.color = Color(255, 255, 0);
 				else
-					tempTeam.color = Color(255, 255, 255);
+					tempCrew.color = Color(255, 255, 255);
 
 				SOT->Ships[c].crewID = crews[c].GetCrewID();
 
@@ -334,10 +346,10 @@ void cCheat::readData()
 					SOT->Pirates[(c * 4) + p].crewID = crews[c].GetCrewID();
 					SOT->Pirates[(c * 4) + p].name = tempPlayers.PlayerName;
 
-					tempTeam.Players.push_back(tempPlayers);
+					tempCrew.Players.push_back(tempPlayers);
 				}
-				Crews.push_back(tempTeam);
-				tempTeam.Players.clear();
+				Crews.push_back(tempCrew);
+				tempCrew.Players.clear();
 			}
 
 		}

@@ -21,7 +21,7 @@ public:
 	void String(const wchar_t * szString, float X, float Y, D3DCOLOR COLOR, bool Centered, std::string name);
 	void FilledTriangleEx(FLOAT PosX, FLOAT PosY, FLOAT Size, D3DCOLOR tColourStart, D3DCOLOR tColourMid, D3DCOLOR tColourEnd);
 	void HealthBar(int health, float maxhealth, int x, int y, int width, int height);
-	void DrawScoreBoard(int x, int y, std::vector<Team> Teams);
+	void DrawCrewList(int x, int y, std::vector<Crew> Crews);
 	void Box(int x, int y, int width, int height, D3DCOLOR colour);
 	void Draw();
 

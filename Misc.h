@@ -4,7 +4,7 @@
 #include <codecvt>
 #include <utility>
 
-class  cMisc
+class cMisc
 {
 public:
 	bool  WorldToScreen(Vector3  world, Vector2* screen);

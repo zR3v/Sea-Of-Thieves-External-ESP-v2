@@ -26,35 +26,54 @@ public:
 	{
 		int colorCommon[4], colorRare[4], colorMythical[4], colorLegendary[4], colorSpecial[4], colorOther[4];
 
+		struct Crewlist
+		{
+			bool bActive;
+		}Crewlist;
+
 		struct Animals
 		{
 			int colorWorld[4];
 			bool bActive, bSnake, bChicken, bPig;
 		}Animals;
+
 		struct World
 		{
 			int colorWorld[4];
 			bool bShipWreck, bMermaid, bFort, bIslands, bMapPins;
 		}World;
+
 		struct Ships
 		{
 			int colorEnemy[4], colorTeam[4];
 			bool bActive;
 		}Ships;
+
 		struct Player
 		{
 			int colorEnemy[4], colorTeam[4];
 			bool bName, bActive, bWeapon, bHealth, bTeam;
 		}Player;
+
 		struct Skeleton
 		{
 			int colorSkeleton[4];
 			bool bActive, bWeapon;
 		}Skeleton;
+
 		struct Treasure
 		{
 			bool bActive;
 		}Treasure;
+
+		struct Crosshair {
+			bool bActive;
+		}Crosshair;
+
+		struct HUD {
+			bool bActive;
+		}HUD;
+		
 	}ESP;
 
 };

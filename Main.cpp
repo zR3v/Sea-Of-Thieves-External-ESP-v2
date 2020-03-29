@@ -32,6 +32,8 @@ KeyToggle toggleF2(VK_F2);
 KeyToggle toggleF3(VK_F3);
 KeyToggle toggleF4(VK_F4);
 KeyToggle toggleF5(VK_F5);
+KeyToggle toggleF6(VK_F6);
+KeyToggle toggleF12(VK_F12);
 
 POINT p;
 bool moving = false;
@@ -130,7 +132,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 			break;
 
 		if (toggleF1)
-			Menu->menuOpen = !Menu->menuOpen;
+			Vars.ESP.Crewlist.bActive = !Vars.ESP.Crewlist.bActive;
 		if (toggleF2)
 			Vars.ESP.Animals.bActive = !Vars.ESP.Animals.bActive;
 		if (toggleF3)
@@ -139,6 +141,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 			Vars.ESP.Ships.bActive = !Vars.ESP.Ships.bActive;
 		if (toggleF5)
 			Vars.ESP.Treasure.bActive = !Vars.ESP.Treasure.bActive;
+		if (toggleF6)
+			Vars.ESP.Crosshair.bActive = !Vars.ESP.Crosshair.bActive;
+		if (toggleF12)
+			Vars.ESP.HUD.bActive = !Vars.ESP.HUD.bActive;
 
 		if (GetAsyncKeyState(VK_INSERT))
 			g_configs.load("default");
