@@ -1,81 +1,69 @@
 #pragma once
 
-struct sColor
-{
-	int r = 255;
-	int g = 255;
-	int b = 255;
-	int a = 255;
+struct sColor {
+    int r = 255;
+    int g = 255;
+    int b = 255;
+    int a = 255;
 
-	sColor operator=(int color[4])
-	{
-		r = color[0];
-		g = color[1];
-		b = color[2];
-		a = color[3];
-		return *this;
-	}
+    sColor operator=(int color[4]) {
+        r = color[0];
+        g = color[1];
+        b = color[2];
+        a = color[3];
+        return *this;
+    }
 };
 
 class vars {
-public:
+  public:
+    bool GUI = true;
 
-	bool GUI = true;
+    struct ESP {
+        int colorCommon[4], colorRare[4], colorMythical[4], colorLegendary[4], colorSpecial[4], colorOther[4];
 
-	struct ESP
-	{
-		int colorCommon[4], colorRare[4], colorMythical[4], colorLegendary[4], colorSpecial[4], colorOther[4];
+        struct Crewlist {
+            bool bActive;
+        } Crewlist;
 
-		struct Crewlist
-		{
-			bool bActive;
-		}Crewlist;
+        struct Animals {
+            int colorWorld[4];
+            bool bActive, bSnake, bChicken, bPig;
+        } Animals;
 
-		struct Animals
-		{
-			int colorWorld[4];
-			bool bActive, bSnake, bChicken, bPig;
-		}Animals;
+        struct World {
+            int colorWorld[4];
+            bool bShipWreck, bMermaid, bFort, bIslands, bMapPins;
+        } World;
 
-		struct World
-		{
-			int colorWorld[4];
-			bool bShipWreck, bMermaid, bFort, bIslands, bMapPins;
-		}World;
+        struct Ships {
+            int colorEnemy[4], colorTeam[4];
+            bool bActive;
+        } Ships;
 
-		struct Ships
-		{
-			int colorEnemy[4], colorTeam[4];
-			bool bActive;
-		}Ships;
+        struct Player {
+            int colorEnemy[4], colorTeam[4];
+            bool bName, bActive, bWeapon, bHealth, bTeam;
+        } Player;
 
-		struct Player
-		{
-			int colorEnemy[4], colorTeam[4];
-			bool bName, bActive, bWeapon, bHealth, bTeam;
-		}Player;
+        struct Skeleton {
+            int colorSkeleton[4];
+            bool bActive, bWeapon;
+        } Skeleton;
 
-		struct Skeleton
-		{
-			int colorSkeleton[4];
-			bool bActive, bWeapon;
-		}Skeleton;
+        struct Treasure {
+            bool bActive;
+        } Treasure;
 
-		struct Treasure
-		{
-			bool bActive;
-		}Treasure;
+        struct Crosshair {
+            bool bActive;
+        } Crosshair;
 
-		struct Crosshair {
-			bool bActive;
-		}Crosshair;
+        struct HUD {
+            bool bActive;
+        } HUD;
 
-		struct HUD {
-			bool bActive;
-		}HUD;
-		
-	}ESP;
-
+    } ESP;
 };
 
 extern vars Vars;

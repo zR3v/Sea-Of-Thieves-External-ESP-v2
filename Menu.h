@@ -1,18 +1,15 @@
 #pragma once
 #include "Drawing.h"
 
+class cMenu {
+  public:
+    bool menuOpen = true;
+    Vector2 curPos;
 
-class cMenu
-{
-public:
-	bool menuOpen = true;
-	Vector2 curPos;
+  public:
+    void DrawMenu();
 
-public:
-	void DrawMenu();
-
-private:
-
+  private:
 };
 
 extern cMenu* Menu;
