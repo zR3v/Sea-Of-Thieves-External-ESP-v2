@@ -1,11 +1,10 @@
 {
-    "ESP.Animals.bActive": true,
-    "ESP.Animals.bChicken": false,
+    "ESP.Animals.bActive": false,
+    "ESP.Animals.bChicken": true,
     "ESP.Animals.bPig": true,
     "ESP.Animals.bSnake": true,
     "ESP.Crewlist.bActive": true,
     "ESP.Crosshair.bActive": false,
-    "ESP.HUD.bActive": true,
     "ESP.Player.bActive": true,
     "ESP.Player.bHealth": false,
     "ESP.Player.bName": true,
@@ -46,9 +45,10 @@
         "3": 255
     },
     "ESP.Treasure.bActive": true,
+    "ESP.World.bDebug": false,
     "ESP.World.bFort": true,
     "ESP.World.bIslands": false,
-    "ESP.World.bMapPins": true,
+    "ESP.World.bMapPins": false,
     "ESP.World.bMermaid": true,
     "ESP.World.bShipWreck": true,
     "ESP.World.colorWorld": {

@@ -36,6 +36,8 @@ KeyToggle toggleF3(VK_F3);
 KeyToggle toggleF4(VK_F4);
 KeyToggle toggleF5(VK_F5);
 KeyToggle toggleF6(VK_F6);
+KeyToggle toggleF7(VK_F7);
+KeyToggle toggleF11(VK_F11);
 KeyToggle toggleF12(VK_F12);
 
 POINT p;
@@ -139,8 +141,12 @@ int WINAPI WinMain(HINSTANCE hInstance,
             Vars.ESP.Treasure.bActive = !Vars.ESP.Treasure.bActive;
         if (toggleF6)
             Vars.ESP.Crosshair.bActive = !Vars.ESP.Crosshair.bActive;
+        if (toggleF7)
+            Vars.ESP.World.bMapPins = !Vars.ESP.World.bMapPins;
+        if (toggleF11)
+            Vars.ESP.World.bDebug = !Vars.ESP.World.bDebug;
         if (toggleF12)
-            Vars.ESP.HUD.bActive = !Vars.ESP.HUD.bActive;
+            Vars.GUI = !Vars.GUI;
 
         if (GetAsyncKeyState(VK_INSERT))
             g_configs.load("default");

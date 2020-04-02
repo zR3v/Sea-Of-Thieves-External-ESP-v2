@@ -78,6 +78,7 @@ bool c_config::init() {
     item(Vars.ESP.World.bFort, "ESP.World.bFort", m_items);
     item(Vars.ESP.World.bIslands, "ESP.World.bIslands", m_items);
     item(Vars.ESP.World.bMapPins, "ESP.World.bMapPins", m_items);
+    item(Vars.ESP.World.bDebug, "ESP.World.bDebug", m_items);
     item(Vars.ESP.World.bShipWreck, "ESP.World.bShipWreck", m_items);
     item(Vars.ESP.World.bMermaid, "ESP.World.bMermaid", m_items);
     item(Vars.ESP.World.colorWorld, "ESP.World.colorWorld", m_items);
@@ -95,7 +96,6 @@ bool c_config::init() {
 
     item(Vars.ESP.Treasure.bActive, "ESP.Treasure.bActive", m_items);
     item(Vars.ESP.Crosshair.bActive, "ESP.Crosshair.bActive", m_items);
-    item(Vars.ESP.HUD.bActive, "ESP.HUD.bActive", m_items);
     item(Vars.ESP.Crewlist.bActive, "ESP.Crewlist.bActive", m_items);
 
     return true;

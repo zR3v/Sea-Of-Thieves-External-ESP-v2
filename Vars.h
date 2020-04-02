@@ -33,7 +33,7 @@ class vars {
 
         struct World {
             int colorWorld[4];
-            bool bShipWreck, bMermaid, bFort, bIslands, bMapPins;
+            bool bShipWreck, bMermaid, bFort, bIslands, bMapPins, bDebug;
         } World;
 
         struct Ships {
@@ -58,10 +58,6 @@ class vars {
         struct Crosshair {
             bool bActive;
         } Crosshair;
-
-        struct HUD {
-            bool bActive;
-        } HUD;
 
     } ESP;
 };

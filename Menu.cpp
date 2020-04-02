@@ -6,7 +6,7 @@ void cMenu::DrawMenu() {
 }
 
 void cDrawing::Draw() {
-    if (Vars.GUI && Vars.ESP.HUD.bActive) {
+    if (Vars.GUI) {
         if (Vars.ESP.Crewlist.bActive) {
             String(std::string("F1: Crewlist On").c_str(), 110, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
             DrawCrewList(100, 100, Cheat->Crews);
@@ -40,9 +40,17 @@ void cDrawing::Draw() {
         } else
             String(std::string("F6: Crosshair Off").c_str(), 860, 10, D3DCOLOR_XRGB(255, 0, 0), false, "default");
 
-        if (Vars.ESP.HUD.bActive) {
-            String(std::string("F12: Toggle HUD").c_str(), 1010, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
-            Cheat->readData();
-        }
+        if (Vars.ESP.World.bMapPins)
+            String(std::string("F7: Pins On").c_str(), 1010, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
+        else
+            String(std::string("F7: Pins Off").c_str(), 1010, 10, D3DCOLOR_XRGB(255, 0, 0), false, "default");
+
+        if (Vars.ESP.World.bDebug)
+            String(std::string("F11: Debug On").c_str(), 1160, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
+        else
+            String(std::string("F11: Debug Off").c_str(), 1160, 10, D3DCOLOR_XRGB(255, 0, 0), false, "default");
+
+        String(std::string("F12: Toggle HUD").c_str(), 1310, 10, D3DCOLOR_XRGB(0, 255, 0), false, "default");
+        Cheat->readData();
     }
 }

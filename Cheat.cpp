@@ -551,12 +551,59 @@ void cCheat::readData() {
 
             else if (name.find("Legendary") != std::wstring::npos)
                 color = Color{Vars.ESP.colorLegendary[0], Vars.ESP.colorLegendary[1], Vars.ESP.colorLegendary[2], Vars.ESP.colorLegendary[3]};
+
             else if (rarity.find("Fort") != std::string::npos || rarity.find("Stronghold") != std::string::npos || rarity.find("PirateLegend") != std::string::npos || rarity.find("Drunken") != std::string::npos || rarity.find("Weeping") != std::string::npos || rarity.find("AIShip") != std::string::npos)
                 color = Color{Vars.ESP.colorSpecial[0], Vars.ESP.colorSpecial[1], Vars.ESP.colorSpecial[2], Vars.ESP.colorSpecial[3]};
 
             Vector2 Screen;
             if (Misc->WorldToScreen(pos, &Screen))
                 DrawString(std::wstring(treasure.GetBootyItemInfo().GetItemDesc().GetName() + L" [ " + std::to_wstring((int)distance) + L"m ] ").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("AnyItemCrate") != std::string::npos) {
+            if (!Vars.ESP.Treasure.bActive)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            auto treasure = *reinterpret_cast<AItemProxy*>(&actors[i]);
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Storage Crate [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("MessageInABottle") != std::string::npos) {
+            if (!Vars.ESP.Treasure.bActive)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            auto treasure = *reinterpret_cast<AItemProxy*>(&actors[i]);
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Message in a Bottle [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("") != std::string::npos) {
+            if (!Vars.ESP.World.bDebug)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString((name).c_str(), Screen.x, Screen.y, color, true, "default");
         }
     }
 }
