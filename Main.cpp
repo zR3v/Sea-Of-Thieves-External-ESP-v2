@@ -37,6 +37,7 @@ KeyToggle toggleF4(VK_F4);
 KeyToggle toggleF5(VK_F5);
 KeyToggle toggleF6(VK_F6);
 KeyToggle toggleF7(VK_F7);
+KeyToggle toggleF8(VK_F8);
 KeyToggle toggleF11(VK_F11);
 KeyToggle toggleF12(VK_F12);
 
@@ -143,6 +144,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
             Vars.ESP.Crosshair.bActive = !Vars.ESP.Crosshair.bActive;
         if (toggleF7)
             Vars.ESP.World.bMapPins = !Vars.ESP.World.bMapPins;
+        if (toggleF8)
+            Vars.ESP.World.bShipWreck = !Vars.ESP.World.bShipWreck;
         if (toggleF11)
             Vars.ESP.World.bDebug = !Vars.ESP.World.bDebug;
         if (toggleF12)

@@ -96,6 +96,7 @@ void cCheat::readData() {
 
     auto level = world.GetLevel();
     auto actors = level.GetActors();
+    bool bKrakenTime = true;
     if (!actors.IsValid())
         return;
 
@@ -160,6 +161,7 @@ void cCheat::readData() {
         }
 
         else if (name.find("BP_SkellyShip_ShipCloud") != std::string::npos) {
+            bKrakenTime = false;
             if (!Vars.ESP.World.bFort)
                 continue;
 
@@ -173,7 +175,8 @@ void cCheat::readData() {
                 DrawString(std::string("Ship Cloud [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
         }
 
-        else if (name.find("BP_SkellyFort_SkullCloud_C") != std::string::npos) {
+        else if (name.find("BP_SkellyFort_SkullCloud_") != std::string::npos) {
+            bKrakenTime = false;
             if (!Vars.ESP.World.bFort)
                 continue;
 
@@ -185,6 +188,20 @@ void cCheat::readData() {
             Vector2 Screen;
             if (Misc->WorldToScreen(pos, &Screen))
                 DrawString(std::string("Skull Fort [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("BP_SkellyFort_RitualSkullCloud_") != std::string::npos) {
+            if (!Vars.ESP.World.bFort)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            Color color = {Vars.ESP.colorLegendary[0], Vars.ESP.colorLegendary[1], Vars.ESP.colorLegendary[2], Vars.ESP.colorLegendary[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Fort of the Damned [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
         }
 
         else if (name.find("MapTable_C") != std::string::npos) {
@@ -523,6 +540,19 @@ void cCheat::readData() {
 
         }
 
+        else if (name.find("BP_Rowboat_C") != std::string::npos) {
+            if (!Vars.ESP.Ships.bActive)
+                continue;
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Rowboat [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
         else if (name.find("Proxy") != std::string::npos) {
             if (!Vars.ESP.Treasure.bActive)
                 continue;
@@ -531,9 +561,9 @@ void cCheat::readData() {
 
             auto treasure = *reinterpret_cast<AItemProxy*>(&actors[i]);
 
-            int booty = treasure.GetBootyItemInfo().GetBootyType();
+            int bootyType = treasure.GetBootyItemInfo().GetBootyType();
 
-            if (booty > EBootyTypes::EBootyTypes__EBootyTypes_MAX || booty < 1)
+            if (bootyType > EBootyTypes::EBootyTypes__EBootyTypes_MAX || bootyType < 1)
                 continue;
 
             auto rarity = getNameFromIDmem(treasure.GetBootyItemInfo().GetRareityId());
@@ -567,8 +597,6 @@ void cCheat::readData() {
             auto pos = actor.GetRootComponent().GetPosition();
             auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
 
-            auto treasure = *reinterpret_cast<AItemProxy*>(&actors[i]);
-
             Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
 
             Vector2 Screen;
@@ -583,13 +611,43 @@ void cCheat::readData() {
             auto pos = actor.GetRootComponent().GetPosition();
             auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
 
-            auto treasure = *reinterpret_cast<AItemProxy*>(&actors[i]);
-
             Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
 
             Vector2 Screen;
             if (Misc->WorldToScreen(pos, &Screen))
                 DrawString(std::string("Message in a Bottle [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("BoxOfSecrets") != std::string::npos) {
+            if (!Vars.ESP.Treasure.bActive)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Box of Wondrous Secrets [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("ReapersChest") != std::string::npos) {
+            if (!Vars.ESP.Treasure.bActive)
+                continue;
+
+            auto pos = actor.GetRootComponent().GetPosition();
+            auto distance = SOT->localCamera.position.DistTo(pos) / 100.00f;
+
+            Color color = {Vars.ESP.World.colorWorld[0], Vars.ESP.World.colorWorld[1], Vars.ESP.World.colorWorld[2], Vars.ESP.World.colorWorld[3]};
+
+            Vector2 Screen;
+            if (Misc->WorldToScreen(pos, &Screen))
+                DrawString(std::string("Reapers Chest [ " + std::to_string((int)distance) + "m ]").c_str(), Screen.x, Screen.y, color, true, "default");
+        }
+
+        else if (name.find("AthenaPlayerCameraManager") != std::string::npos || name.find("Copiedwsp_res_island_01_h_navblocker") != std::string::npos) {
+            continue;
         }
 
         else if (name.find("") != std::string::npos) {
@@ -606,4 +664,7 @@ void cCheat::readData() {
                 DrawString((name).c_str(), Screen.x, Screen.y, color, true, "default");
         }
     }
+
+    if (bKrakenTime)
+        DrawString(std::string("Kranken Time").c_str(), 2370, 1335, {0, 255, 0}, false, "default");
 }

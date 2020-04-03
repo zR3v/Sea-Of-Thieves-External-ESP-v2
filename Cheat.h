@@ -110,7 +110,7 @@ struct Crew {
 class cCheat {
   public:
     std::vector<Crew> Crews;
-    bool bAnimals, bShips, bPlayers, bTreasure;
+    bool bAnimals, bShips, bPlayers, bTreasure, bKrakenTime;
 
   public:
     void readData();

@@ -50,7 +50,7 @@
     "ESP.World.bIslands": false,
     "ESP.World.bMapPins": false,
     "ESP.World.bMermaid": true,
-    "ESP.World.bShipWreck": true,
+    "ESP.World.bShipWreck": false,
     "ESP.World.colorWorld": {
         "0": 255,
         "1": 255,
